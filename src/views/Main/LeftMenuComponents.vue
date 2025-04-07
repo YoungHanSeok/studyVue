@@ -58,7 +58,7 @@ const toggleMenu = () => {
   background-color: #222;
   color: white;
   position: fixed;
-  top: 0;
+  top: 60px;
   left: -250px; /* 숨긴 상태 */
   transition: left 0.3s ease;
   z-index: 1000;
@@ -84,15 +84,7 @@ const toggleMenu = () => {
   display: block;
 }
 
-.main-content {
-  margin-left: 0;
-  padding: 2rem;
-  flex-grow: 1;
-  margin-left: 0;
-  transition: margin-left 0.3s ease;
-}
-
-.sidebar.open ~ .main-content {
+.sidebar.open {
   margin-left: 250px;
 }
 </style>
