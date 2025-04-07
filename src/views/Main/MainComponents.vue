@@ -1,6 +1,6 @@
 <template>
   <main :class="['main-content', { shifted: menuOpen }]">
-    <h1>메인 콘텐츠 영역</h1>
+    <h1>메인 콘텐츠 영역11</h1>
     <p>여기에 실제 페이지 내용이 들어갑니다.</p>
   </main>
 </template>
