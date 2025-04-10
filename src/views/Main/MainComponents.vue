@@ -1,11 +1,32 @@
 <template>
   <main :class="['main-content', { shifted: menuOpen }]">
-    <h1>메인 콘텐츠 영역</h1>
-    <p>여기에 실제 페이지 내용이 들어갑니다.</p>
+    <div>
+      <h2>TO-DO LIST</h2>
+      <form action="">
+        <div>
+          {{ name }}
+        </div>
+        <input type="text" v-model="name" @input="updateName(name)">
+        <button @click="changeName">이름 바꾸기</button>
+      </form>
+    </div>
   </main>
 </template>
 
 <script setup>
+import {ref,reactive} from 'vue';
+
+
+let name = ref('');
+
+const updateName = (data) => {
+  
+}
+
+const changeName = () => {
+
+}
+
 defineProps({
   menuOpen: Boolean
 })
