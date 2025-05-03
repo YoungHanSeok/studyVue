@@ -1,0 +1,24 @@
+$breakpoint-pc: 1200px;
+$breakpoint-mobile-max: 1199px;
+
+
+#test{
+}
+
+@media(max-width: $breakpoint-mobile-max){
+  #test1 {
+    display: none; // 1000px 미만일 때 숨김
+  }
+  #test2{
+    display: block;
+  }
+}
+
+@media(min-width: $breakpoint-pc){
+#test1 {
+  display: block; // 1000px 미만일 때 숨김
+}
+#test2{
+  display: none;
+}
+}

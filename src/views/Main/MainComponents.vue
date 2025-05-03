@@ -32,6 +32,16 @@ const searchText = ref('');
 const searchKeywork = ref('');
 const error = ref('');
 
+const getTodos = async () => {
+  try {
+    const res = await axios.get("http://localhost:3000/todos");
+    todos.value = res.data;
+  }catch (e) {
+    console.log(e);
+  }
+
+}
+getTodos();
 const filterTodos = computed(() => {
   if (searchText.value){
     return todos.value.filter(todo => {
@@ -45,28 +55,53 @@ const doSearch = () => {
   searchKeywork.value = searchText.value;
 }
 
-const deleteTodo = (index) =>{
-  console.log("Delete Todo");
-  todos.value.splice(index,1);
+const deleteTodo = async (index) =>{
+  error.value = '';
+  const id = todos.value[index].id;
+  try {
+   const res = await axios.delete("http://localhost:3000/todos/"+id);
+    todos.value.splice(index,1);
+  }catch (e){
+    console.log(e);
+  }
 }
 
-const toogleTodo = (index) => {
-  todos.value[index].completed = !todos.value[index].completed;
+const toogleTodo = async (index) => {
+  error.value = '';
+  const id = todos.value[index].id;
+  try {
+    await axios.patch("http://localhost:3000/todos/"+id,{
+      completed : !todos.value[index].completed,
+    });
+    todos.value[index].completed = !todos.value[index].completed;
+  }catch (e){
+    console.log(e);
+  }
+
 }
 
-const addTodo = (todo) => {
+const addTodo = async (todo) => {
   // 데이터베이스에 저장
   error.value= '';
-  axios.post("http://localhost:3000/todos",{
-    subject : todo.subject,
-    completed : todo.completed
-  }).then(res => {
-    console.log(res);
-    todos.value.push(todo);
-  }).catch(err => {
-    console.log(err);
-    error.value = 'Something went wrong';
-  })
+  try {
+    const res = await axios.post("http://localhost:3000/todos",{
+      subject : todo.subject,
+      completed : todo.completed
+    })
+    todos.value.push(res.data);
+  }catch (e) {
+      console.log(e);
+      error.value = 'Something went wrong';
+  }
+
+
+  //     .then(res => {
+  //   console.log(res);
+  //   todos.value.push(todo);
+  // }).catch(err => {
+  //   console.log(err);
+  //   error.value = 'Something went wrong';
+  // })
 
 }
 defineProps({

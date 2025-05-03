@@ -2,13 +2,28 @@
   "todos": [
     {
       "subject": "asdf",
-      "completed": false,
+      "completed": true,
       "id": 1
     },
     {
-      "subject": "buy milk",
-      "completed": false,
+      "subject": "ㅁ",
+      "completed": true,
       "id": 2
+    },
+    {
+      "subject": "ㅠ",
+      "completed": false,
+      "id": 3
+    },
+    {
+      "subject": "ㅊ",
+      "completed": false,
+      "id": 4
+    },
+    {
+      "subject": "ㄴ",
+      "completed": true,
+      "id": 5
     }
   ]
 }
